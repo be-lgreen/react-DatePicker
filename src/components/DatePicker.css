@@ -1,0 +1,23 @@
+.DatePickerTemplate{
+    max-width: 500px;
+    width: 800px;
+    background-color: lightgray;
+    box-shadow: 0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15); 
+}
+
+.DatePickerTitle{
+    background-color: white;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.DatePickerDayNamesContainer{
+    background-color: white;
+    margin-bottom: 1px;
+}
+
+.DatePickerDaysContainer{
+    background-color: white;
+}
+
+

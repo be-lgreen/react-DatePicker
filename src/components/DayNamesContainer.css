@@ -1,0 +1,15 @@
+.dayNamesMarkup{
+    display: flex;
+    justify-content: center;
+}
+
+.DayName{ 
+    flex: 1 0 0%;
+    background: transparent;
+    font-size: 1em;
+    font-weight: 550;
+    text-align: center;
+    color: rgb(141, 141, 141);
+    padding: 0.5em;
+}
+
