@@ -1,0 +1,87 @@
+.EmptyStateDay{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+
+    background: transparent;
+}
+
+.GrayStateDay{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+
+    background: transparent;
+    color:  rgb(213, 213, 213);
+}
+
+.DayBlack{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    background: transparent;
+    color: black;
+    
+}
+
+.DayRed{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    background: transparent;
+    color: rgb(242, 97, 98);
+}
+
+.DayBlue{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    background: transparent;
+    color: rgb(73, 161, 251)
+}
+
+.DayGreen{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+
+    background: transparent;
+    color:  rgb(44, 199, 50);
+}
+
+.DaySelected{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+
+    background: cornflowerblue;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}

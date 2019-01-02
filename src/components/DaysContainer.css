@@ -3,30 +3,11 @@
     justify-content: center;
 }
 
-.pastDay, .currentDay, .redDay, .blueDay, .blackDay{
+.Day{
     flex: 1 0 0%;
     background: transparent;
     font-size: 1em;
     font-weight: 600;
     text-align: center;
     padding: 0.8em;
-}
-.pastDay{
-    color: rgb(213, 213, 213);
-}
-
-.currentDay{
-    color: rgb(44, 199, 50);
-}
-
-.redDay{
-    color: rgb(242, 97, 98);
-}
-
-.blueDay{
-    color: rgb(73, 161, 251)
-}
-
-.blackDay{
-    color: black;
 }

@@ -29,41 +29,75 @@ function getDaysOfMonth(thisYear, thisMonth){
     return monthArray;
 }
 
-function getDayMarkup(day){
-    const currentDate = new Date();
-    let renderDay = " ";
-    if(day !== null){
-        renderDay = day.getDate();
-        if(renderDay < currentDate.getDate())
-            return(<div className="pastDay">{renderDay}</div>);
-        else if(renderDay === currentDate.getDate())
-            return(<div className="currentDay">{renderDay}</div>);
-        else{
-            if(day.getDay() === 0)
-                return(<div className="redDay">{renderDay}</div>)
-            else if(day.getDay() === 6)
-                return(<div className="blueDay">{renderDay}</div>)
-            else 
-                return(<div className="blackDay">{renderDay}</div>)
-        }
-    }else{
-        return(<div className="blackDay">{renderDay}</div>)
-    }
-}
-
 class DaysContainer extends Component{
-
+    constructor(props){
+        super(props);
+        this.getDayMarkup = this.getDayMarkup.bind(this);
+    }
     render(){
-        const currentDate = new Date();
-        const thisYear = currentDate.getFullYear();
-        const thisMonth = currentDate.getMonth();
+        const{ selectedDate } = this.props;
+
+        const thisYear = selectedDate.getFullYear();
+        const thisMonth = selectedDate.getMonth();
 
         const monthArray = getDaysOfMonth(thisYear, thisMonth);
-        const daysOfMonthMarkup = monthArray.map(week => <div className="week">{week.map(getDayMarkup)}</div>);           
+        const daysOfMonthMarkup = monthArray.map(week => <div className="week">{week.map(this.getDayMarkup)}</div>);           
         return(
             <div>{daysOfMonthMarkup}</div>
         );
     }
+
+    getDayMarkup(day){
+        const { selectedDate, selectedDate2, isStartDateSelected, handleDayClick} = this.props;
+        
+        
+        if(day !== null){
+
+            //if component uploaded for the first time, variable isStartDateSelected is false 
+            let selected = false;
+            if(isStartDateSelected === true){
+                selected = (day.getDate() === selectedDate.getDate());
+            }
+
+            const currentDate = new Date(2019,0,12).getDate();
+            const renderDate = day.getDate();
+
+            if(renderDate < currentDate)
+                return(<div className="Day"><Day day={day} color={"Gray"}/></div>)
+            else if(renderDate === currentDate)
+                return(<div className="Day"><Day day={day} color={"Green"} handleDayClick={handleDayClick} selected={renderDate===selectedDate.getDate()}/></div>);
+            else{
+                if(day.getDay() === 0)
+                    return(<div className="Day"><Day day={day} color={"Red"} handleDayClick={handleDayClick} selected={renderDate===selectedDate.getDate()}/></div>)
+                else if(day.getDay() === 6)
+                    return(<div className="Day"><Day day={day} color={"Blue"} handleDayClick={handleDayClick} selected={renderDate===selectedDate.getDate()}/></div>)
+                else 
+                    return(<div className="Day"><Day day={day} color={"Black"} handleDayClick={handleDayClick} selected={renderDate===selectedDate.getDate()}/></div>)
+            
+            }
+        }else{
+            return(<div className="Day"><Day day={null}/></div>)
+        }
+        /*
+        const currentDate = new Date();
+        if(day !== null){     
+            const renderDay = day.getDate(); 
+            if(renderDay < currentDate.getDate())
+                return(<div className="Day"><Day day={day} color={"Gray"} handleDayClick={handleDayClick} selected={renderDay===selectedDate.getDate()}/></div>);
+            else if(renderDay === currentDate.getDate())
+                return(<div className="Day"><Day day={day} color={"Green"} handleDayClick={handleDayClick} selected={renderDay===selectedDate.getDate()}/></div>);
+            else{
+                if(day.getDay() === 0)
+                    return(<div className="Day"><Day day={day} color={"Red"} handleDayClick={handleDayClick} selected={renderDay===selectedDate.getDate()}/></div>)
+                else if(day.getDay() === 6)
+                    return(<div className="Day"><Day day={day} color={"Blue"} handleDayClick={handleDayClick} selected={renderDay===selectedDate.getDate()}/></div>)
+                else 
+                    return(<div className="Day"><Day day={day} color={"Black"} handleDayClick={handleDayClick} selected={renderDay===selectedDate.getDate()}/></div>)
+            }
+        }else{
+            return(<div className="Day"><Day day={null}/></div>)
+        }*/
+    }  
 }
 
 export default DaysContainer;
