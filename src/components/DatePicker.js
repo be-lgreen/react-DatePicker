@@ -10,12 +10,11 @@ class DatePicker extends Component{
     }
     state = {
         selectedDate: new Date(),
-        selectedDate2: null,
-        isStartDateSelected: false
+        selectedDateList: []
     }
 
     render(){
-        const{ selectedDate, selectedDate2, isStartDateSelected } = this.state;
+        const{ selectedDate, selectedDateList } = this.state;
         const{
             handleDayClick
         } = this;
@@ -28,9 +27,8 @@ class DatePicker extends Component{
                 </div>
                 <div className="DatePickerDaysContainer">
                     <DaysContainer 
-                    selectedDate={selectedDate} 
-                    selectedDate2={selectedDate2} 
-                    isStartDateSelected={isStartDateSelected}
+                    selectedDate={selectedDate}
+                    selectedDateList={selectedDateList}
                     handleDayClick={handleDayClick}/>
                 </div>
             </div>  
@@ -38,28 +36,40 @@ class DatePicker extends Component{
     }
 
     handleDayClick(newDay){
-        const {selectedDate, isStartDateSelected} = this.state;
-        console.log("isStartDateSelected : ", isStartDateSelected);
-        if(isStartDateSelected === false){          
+        const { selectedDate, selectedDateList} = this.state;
+        //console.log("before length: ", selectedDateList.length);
+        //for(let i=0; i<selectedDateList.length; i++){
+        //    console.log("hi: ",selectedDateList[i].getDate());
+        //}
+
+        this.setState({
+            selectedDate: new Date(
+                selectedDate.getFullYear(),
+                selectedDate.getMonth(),
+                newDay.getDate()
+            )
+        })
+        
+        if((selectedDateList.length === 0) || (newDay.getDate() > selectedDateList[selectedDateList.length-1].getDate())){
             this.setState({
-                selectedDate: new Date(
-                    selectedDate.getFullYear(),
-                    selectedDate.getMonth(),
-                    newDay.getDate()
-                ),
-                selectedDate2: null,
-                isStartDateSelected: true
+                selectedDateList: selectedDateList.concat(
+                    new Date(
+                        selectedDate.getFullYear(),
+                        selectedDate.getMonth(),
+                        newDay.getDate()
+                    )
+                )
             })
-        }else if(isStartDateSelected === true){
-            this.setState({
-                selectedDate2: new Date(
-                    selectedDate.getFullYear(),
-                    selectedDate.getMonth(),
-                    newDay.getDate()
-                ),
-                isStartDateSelected: false
-            })
+        }else{
+            for(let i=0; i<selectedDateList.length; i++){
+                //if(newDay.getDate() === selectedDateList[i].getDate()){
+                    this.setState({
+                        selectedDateList: selectedDateList.filter(date => date.getDate() !== newDay.getDate())
+                    })
+                //}
+            }
         }
+
     }
 }
 

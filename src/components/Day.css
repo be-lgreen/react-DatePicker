@@ -21,6 +21,31 @@
     color:  rgb(213, 213, 213);
 }
 
+.GreenStateDay{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+
+    background: transparent;
+    color:  rgb(44, 199, 50);
+}
+
+.MidStateDay{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+
+    background: rgb(234, 249, 248);
+    color: black;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 .DayBlack{
     display: block;
     flex: 1 0 0%;
@@ -61,26 +86,14 @@
     color: rgb(73, 161, 251)
 }
 
-.DayGreen{
-    display: block;
-    flex: 1 0 0%;
-    width: 100%;
-    padding: 0.8rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-
-    background: transparent;
-    color:  rgb(44, 199, 50);
-}
-
 .DaySelected{
     display: block;
     flex: 1 0 0%;
     width: 100%;
     padding: 0.8rem;
 
-    background: cornflowerblue;
+    background: rgb(0, 185, 175);
+    color: white;
     outline: none;
     border: none;
     cursor: pointer;
