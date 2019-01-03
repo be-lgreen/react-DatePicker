@@ -26,7 +26,8 @@ You will also see any lint errors in the console.
 This Component have 1. date range selection 2. multiple date selection 3. customizing text by date
 
 ### `date range selection`
-![datepicker_init](./images/datepicker_init.png)
+<img width="388" alt="datepicker_init" src="https://user-images.githubusercontent.com/31091111/50639221-071e7300-0fa4-11e9-84bd-cad3a9fcd45b.PNG">
+
 ![datepicker_date range selection](./images/datepicker_date range selection.png)
 
 ### `multiple date selection`
