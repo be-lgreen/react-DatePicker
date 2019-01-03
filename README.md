@@ -38,6 +38,7 @@ This Component have 1. date range selection 2. multiple date selection 3. custom
 
 <img width="388" alt="datepicker_text customizing popup" src="https://user-images.githubusercontent.com/31091111/50639280-45b42d80-0fa4-11e9-8f50-24b03693f408.PNG">
 
-<img width="258" alt="datepicker_customizing text done" src="https://user-images.githubusercontent.com/31091111/50643017-418e0d00-0fb0-11e9-856a-d0404c3c69df.PNG">
+<img width="384" alt="datepicker_customizing text done" src="https://user-images.githubusercontent.com/31091111/50643117-7a2de680-0fb0-11e9-9b7e-cecdedea9339.PNG">
+
 
 
