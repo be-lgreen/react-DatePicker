@@ -28,12 +28,15 @@ This Component have 1. date range selection 2. multiple date selection 3. custom
 ### `date range selection`
 <img width="388" alt="datepicker_init" src="https://user-images.githubusercontent.com/31091111/50639221-071e7300-0fa4-11e9-84bd-cad3a9fcd45b.PNG">
 
-![datepicker_date range selection](./images/datepicker_date range selection.png)
+<img width="386" alt="datepicker_date range selection" src="https://user-images.githubusercontent.com/31091111/50639248-2a492280-0fa4-11e9-894a-850884f0f69d.PNG">
 
 ### `multiple date selection`
-![datepicker_multiple dates selection](./images/datepicker_multiple dates selection.png)
+
+<img width="387" alt="datepicker_multiple dates selection" src="https://user-images.githubusercontent.com/31091111/50639269-3c2ac580-0fa4-11e9-9fe7-047e34b92dc8.PNG">
 
 ### `customizing text by date`
-![datepicker_text customizing popup](./images/datepicker_text customizing popup.png)
-![datepicker_customizing text done](./images/datepicker_customizing text done.png)
+
+<img width="388" alt="datepicker_text customizing popup" src="https://user-images.githubusercontent.com/31091111/50639280-45b42d80-0fa4-11e9-8f50-24b03693f408.PNG">
+
+<img width="387" alt="datepicker_customizing text done" src="https://user-images.githubusercontent.com/31091111/50639286-4ea4ff00-0fa4-11e9-8596-fa1fbb5d2c5c.PNG">
 
