@@ -83,7 +83,7 @@
     cursor: pointer;
 
     background: transparent;
-    color: rgb(73, 161, 251)
+    color: rgb(73, 161, 251);
 }
 
 .DaySelected{
@@ -93,6 +93,19 @@
     padding: 0.8rem;
 
     background: rgb(0, 185, 175);
+    color: white;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.MultiDaySelected{
+    display: block;
+    flex: 1 0 0%;
+    width: 100%;
+    padding: 0.8rem;
+
+    background: rgb(73, 161, 251);
     color: white;
     outline: none;
     border: none;

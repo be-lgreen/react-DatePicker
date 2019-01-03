@@ -30,12 +30,10 @@ function getDaysOfMonth(thisYear, thisMonth){
 }
 
 function isDateSelected(renderDate, selectedDateList){
-    //return true or false
     for(let i=0; i<selectedDateList.length; i++){
         if(renderDate === selectedDateList[i].getDate())
             return true;
     }
-
     return false;
 }
 
@@ -73,6 +71,7 @@ class DaysContainer extends Component{
             const renderDate = day.getDate();
             const dateSelected = isDateSelected(renderDate, selectedDateList);
             let dateSelectedMid = false;
+            const selectedDateListLen = selectedDateList.length;
 
             if(!dateSelected){
                 if(selectedDateList.length == 2){
@@ -80,19 +79,41 @@ class DaysContainer extends Component{
                 }
             }
             
-            
-
             if(renderDate < currentDate)
                 return(<div className="Day"><Day day={day} color={"Gray"}/></div>)
             else if(renderDate === currentDate)
                 return(<div className="Day"><Day day={day} color={"Green"}/></div>)
             else{
                 if(day.getDay() === 0)
-                    return(<div className="Day"><Day day={day} color={"Red"} handleDayClick={handleDayClick} selected={dateSelected} selectedMid={dateSelectedMid}/></div>)
+                    return(<div className="Day">
+                    <Day 
+                    day={day} 
+                    color={"Red"} 
+                    handleDayClick={handleDayClick} 
+                    selected={dateSelected} 
+                    selectedMid={dateSelectedMid}
+                    selectedDateListLen={selectedDateListLen}
+                    /></div>)
                 else if(day.getDay() === 6)
-                    return(<div className="Day"><Day day={day} color={"Blue"} handleDayClick={handleDayClick} selected={dateSelected} selectedMid={dateSelectedMid}/></div>)
+                    return(<div className="Day">
+                    <Day 
+                    day={day} 
+                    color={"Blue"} 
+                    handleDayClick={handleDayClick} 
+                    selected={dateSelected} 
+                    selectedMid={dateSelectedMid}
+                    selectedDateListLen={selectedDateListLen}
+                    /></div>)
                 else 
-                    return(<div className="Day"><Day day={day} color={"Black"} handleDayClick={handleDayClick} selected={dateSelected} selectedMid={dateSelectedMid}/></div>)    
+                    return(<div className="Day">
+                    <Day 
+                    day={day} 
+                    color={"Black"} 
+                    handleDayClick={handleDayClick} 
+                    selected={dateSelected} 
+                    selectedMid={dateSelectedMid}
+                    selectedDateListLen={selectedDateListLen}
+                    /></div>)    
             }
         }else{
             return(<div className="Day"><Day day={null}/></div>)
