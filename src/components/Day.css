@@ -9,84 +9,27 @@
     background: transparent;
 }
 
-.GrayStateDay{
+.Day > button {
     display: block;
     flex: 1 0 0%;
     width: 100%;
+    height: 100%;
     padding: 0.8rem;
     outline: none;
     border: none;
-
-    background: transparent;
-    color:  rgb(213, 213, 213);
 }
 
-.GreenStateDay{
+.Day > div > button{
     display: block;
     flex: 1 0 0%;
     width: 100%;
+    height: 100%;
     padding: 0.8rem;
     outline: none;
     border: none;
-
-    background: transparent;
-    color:  rgb(44, 199, 50);
 }
 
-.MidStateDay{
-    display: block;
-    flex: 1 0 0%;
-    width: 100%;
-    padding: 0.8rem;
-
-    background: rgb(234, 249, 248);
-    color: black;
-    outline: none;
-    border: none;
-    cursor: pointer;
-}
-
-.DayBlack{
-    display: block;
-    flex: 1 0 0%;
-    width: 100%;
-    padding: 0.8rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-
-    background: transparent;
-    color: black;
-    
-}
-
-.DayRed{
-    display: block;
-    flex: 1 0 0%;
-    width: 100%;
-    padding: 0.8rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-
-    background: transparent;
-    color: rgb(242, 97, 98);
-}
-
-.DayBlue{
-    display: block;
-    flex: 1 0 0%;
-    width: 100%;
-    padding: 0.8rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-
-    background: transparent;
-    color: rgb(73, 161, 251);
-}
-
-.DaySelected{
+.Selected{
     display: block;
     flex: 1 0 0%;
     width: 100%;
@@ -99,7 +42,7 @@
     cursor: pointer;
 }
 
-.MultiDaySelected{
+.MultiSelected{
     display: block;
     flex: 1 0 0%;
     width: 100%;
@@ -110,4 +53,43 @@
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+.BetweenSelected{
+    background: rgb(234, 249, 248);    
+}
+
+.Gray{   
+    background: transparent;
+    color:  rgb(213, 213, 213);
+}
+
+.Green{
+    background: transparent;
+    color:  rgb(44, 199, 50);
+}
+
+.Black{ 
+    background: transparent; 
+    color: black;   
+}
+
+.Red{ 
+    background: transparent;  
+    color: rgb(242, 97, 98);
+}
+
+.Blue{  
+    background: transparent;
+    color: rgb(73, 161, 251);
+}
+
+.ButtonLayout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ButtonText{
+    font-size: 0.7em; 
 }

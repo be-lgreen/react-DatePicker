@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import "./DaysContainer.css"
 import Day from "./Day"
+import "./Day.css"
 
 function getDaysOfMonth(thisYear, thisMonth){
     let currentDate = new Date(thisYear, thisMonth);
@@ -63,7 +64,7 @@ class DaysContainer extends Component{
     }
 
     getDayMarkup(day){
-        const { selectedDateList, handleDayClick} = this.props;
+        const { selectedDateList, handleDayClicks, inputTextArray} = this.props;
         
         
         if(day !== null){
@@ -80,39 +81,42 @@ class DaysContainer extends Component{
             }
             
             if(renderDate < currentDate)
-                return(<div className="Day"><Day day={day} color={"Gray"}/></div>)
+                return(<div className="Day"><Day day={day} color={"Gray"} inputTextArray={inputTextArray}/></div>)
             else if(renderDate === currentDate)
-                return(<div className="Day"><Day day={day} color={"Green"}/></div>)
+                return(<div className="Day"><Day day={day} color={"Green"} inputTextArray={inputTextArray}/></div>)
             else{
                 if(day.getDay() === 0)
                     return(<div className="Day">
                     <Day 
                     day={day} 
                     color={"Red"} 
-                    handleDayClick={handleDayClick} 
                     selected={dateSelected} 
                     selectedMid={dateSelectedMid}
                     selectedDateListLen={selectedDateListLen}
+                    handleDayClicks={handleDayClicks}
+                    inputTextArray={inputTextArray}
                     /></div>)
                 else if(day.getDay() === 6)
                     return(<div className="Day">
                     <Day 
                     day={day} 
                     color={"Blue"} 
-                    handleDayClick={handleDayClick} 
+                    handleDayClicks={handleDayClicks} 
                     selected={dateSelected} 
                     selectedMid={dateSelectedMid}
                     selectedDateListLen={selectedDateListLen}
+                    inputTextArray={inputTextArray}
                     /></div>)
                 else 
                     return(<div className="Day">
                     <Day 
                     day={day} 
                     color={"Black"} 
-                    handleDayClick={handleDayClick} 
+                    handleDayClicks={handleDayClicks} 
                     selected={dateSelected} 
                     selectedMid={dateSelectedMid}
                     selectedDateListLen={selectedDateListLen}
+                    inputTextArray={inputTextArray}
                     /></div>)    
             }
         }else{

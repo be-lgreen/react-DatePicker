@@ -2,21 +2,33 @@ import React ,{Component} from "react";
 import "./DatePicker.css";
 import DayNamesContainer from "./DayNamesContainer";
 import DaysContainer from "./DaysContainer";
+import Popup from './Popup';
 
 class DatePicker extends Component{
     constructor(props){
         super(props);
         this.handleDayClick = this.handleDayClick.bind(this);
+        this.clickCount = 0;
+        this.singleClickTimer = '';
     }
     state = {
         selectedDate: new Date(),
-        selectedDateList: []
+        selectedDateList: [],
+
+        showPopup : false,
+        inputTextArray : ['', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '', '', '', '', '', '',
+        '', '', '', '', '']
     }
 
     render(){
-        const{ selectedDate, selectedDateList } = this.state;
+        const{ selectedDate, selectedDateList, showPopup, inputTextArray} = this.state;
         const{
-            handleDayClick
+            handleDayClicks,
+
+            handlePopupCloseClick,
+            handleButtonText,         
         } = this;
  
         return(    
@@ -29,19 +41,17 @@ class DatePicker extends Component{
                     <DaysContainer 
                     selectedDate={selectedDate}
                     selectedDateList={selectedDateList}
-                    handleDayClick={handleDayClick}/>
+                    handleDayClicks={handleDayClicks}
+                    inputTextArray={inputTextArray}
+                    />
                 </div>
+                {showPopup ? <Popup handleButtonText={handleButtonText} handlePopupCloseClick={handlePopupCloseClick}/> : null}
             </div>  
         );
     }
 
     handleDayClick(newDay){
         const { selectedDate, selectedDateList} = this.state;
-        //console.log("before length: ", selectedDateList.length);
-        //for(let i=0; i<selectedDateList.length; i++){
-        //    console.log("hi: ",selectedDateList[i].getDate());
-        //}
-
         this.setState({
             selectedDate: new Date(
                 selectedDate.getFullYear(),
@@ -70,6 +80,59 @@ class DatePicker extends Component{
             }
         }
 
+    }
+
+    handleDayDoubleClick = (newDay) => {
+        console.log("handleDaydoubleClick: ", newDay);
+
+        const{ showPopup, selectedDate} = this.state;
+        this.setState({
+            selectedDate: new Date(
+                selectedDate.getFullYear(),
+                selectedDate.getMonth(),
+                newDay.getDate()
+            ),
+            showPopup: !showPopup
+        })
+    }
+
+    handleDayClicks = (newDay) => {
+        const{handleDayClick, handleDayDoubleClick} = this;
+
+        this.clickCount++;
+        if(this.clickCount === 1){
+            this.singleClickTimer = setTimeout(function(){
+                this.clickCount = 0;
+                handleDayClick(newDay);
+            }.bind(this), 300);
+        }else if(this.clickCount == 2){
+            clearTimeout(this.singleClickTimer);
+            this.clickCount = 0;
+            handleDayDoubleClick(newDay);
+        }
+    }
+
+    handlePopupCloseClick = () => {
+        const{showPopup} = this.state;
+
+        this.setState({
+            showPopup : !showPopup
+        })
+    }
+
+    handleButtonText = (inputText) => {
+        const{inputTextArray, selectedDate} = this.state;
+        this.setState({
+            inputTextArray : inputTextArray.map(
+                (info, index) => {
+                    if(index === selectedDate.getDate()){
+                        return inputText;
+                    }else{
+                        return info;
+                    }
+                }
+            )
+        })
     }
 }
 
