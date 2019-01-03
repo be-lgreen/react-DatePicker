@@ -26,13 +26,13 @@ You will also see any lint errors in the console.
 This Component have 1. date range selection 2. multiple date selection 3. customizing text by date
 
 ### `date range selection`
-![CreatePlan](./images/datepicker_init.png)
-![CreatePlan](./images/datepicker_date range selection.png)
+![datepicker_init](./images/datepicker_init.png)
+![datepicker_date range selection](./images/datepicker_date range selection.png)
 
 ### `multiple date selection`
-![CreatePlan](./images/datepicker_multiple dates selection.png)
+![datepicker_multiple dates selection](./images/datepicker_multiple dates selection.png)
 
 ### `customizing text by date`
-![CreatePlan](./images/datepicker_text customizing popup.png)
-![CreatePlan](./images/datepicker_customizing text done.png)
+![datepicker_text customizing popup](./images/datepicker_text customizing popup.png)
+![datepicker_customizing text done](./images/datepicker_customizing text done.png)
 
