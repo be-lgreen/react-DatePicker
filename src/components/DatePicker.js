@@ -22,6 +22,15 @@ class DatePicker extends Component{
         '', '', '', '', '']
     }
 
+    shouldComponentUpdate(nextProps, nextState){
+        if((this.state.inputTextArray !== nextState.inputTextArray) ||
+         (this.state.selectedDateList !== nextState.selectedDateList) ||
+         (this.state.showPopup !== nextState.showPopup))
+            return true;
+        else
+            return false;
+    }
+
     render(){
         const{ selectedDate, selectedDateList, showPopup, inputTextArray} = this.state;
         const{
@@ -105,7 +114,7 @@ class DatePicker extends Component{
                 this.clickCount = 0;
                 handleDayClick(newDay);
             }.bind(this), 300);
-        }else if(this.clickCount == 2){
+        }else if(this.clickCount === 2){
             clearTimeout(this.singleClickTimer);
             this.clickCount = 0;
             handleDayDoubleClick(newDay);

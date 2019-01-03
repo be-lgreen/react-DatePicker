@@ -17,7 +17,6 @@ class Popup extends Component{
         const{ inputText} = this.state;
 
         e.preventDefault(); 
-        console.log("in handleTextSubmit 등록버튼 누른후");
         handleButtonText(inputText);
         this.setState({
             inputText : ''

@@ -1,32 +1,30 @@
 import React, {Component} from "react";
 import "./Day.css"
 
-const Day = ({day, color, handleDayClicks, selected, selectedMid, selectedDateListLen, inputTextArray}) => {
+const Day = ({day, color, handleDayClicks, selected, selectedMid, selectedDateListLen, inputText, disable}) => {
     //buttons which disalbed="true"
     if(day === null){
         return <div className="EmptyStateDay"></div>
     }
 
-    if(color === "Gray"){
-        return <button className="Gray" disabled="true">{day.getDate()}</button> 
-    }else if(color === "Green"){
-        return <button className="Green" disabled="true">{day.getDate()}</button>
-    }
-
-    
     let className = ""
-    className = className + (selected ? "Selected" : color);
+    className = className + (selected >= 0 ? "Selected" : color);
     if(selectedDateListLen >= 3 && className === "Selected"){
         className = "Multi" + className;
     }
     if(selectedMid){
         className = "BetweenSelected";
     }
+    if(color === "Gray")
+        className = "Gray"
+    else if(color === "Green")
+        className = "Green"
+        
     return(
-            <button className={className} onClick={handleDayClicks.bind(this,day)}>
+            <button className={className} onClick={handleDayClicks.bind(this,day)} disabled={disable}>
                 <div className="ButtonLayout">
-                    <text>{day.getDate()}</text>
-                    <text className="ButtonText">{inputTextArray[day.getDate()]}</text>
+                    <text className="ButtonDateText">{day.getDate()}</text>
+                    <text className="ButtonText">{inputText}</text>
                 </div>
            </button>   
     );

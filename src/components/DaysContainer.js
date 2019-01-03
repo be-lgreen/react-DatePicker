@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import "./DaysContainer.css"
 import Day from "./Day"
 import "./Day.css"
+import { strict } from "assert";
 
 function getDaysOfMonth(thisYear, thisMonth){
     let currentDate = new Date(thisYear, thisMonth);
@@ -33,9 +34,9 @@ function getDaysOfMonth(thisYear, thisMonth){
 function isDateSelected(renderDate, selectedDateList){
     for(let i=0; i<selectedDateList.length; i++){
         if(renderDate === selectedDateList[i].getDate())
-            return true;
+            return i;
     }
-    return false;
+    return -1;
 }
 
 function isDateSelectedMid(renderDate, selectedDateList){
@@ -50,6 +51,7 @@ class DaysContainer extends Component{
         super(props);
         this.getDayMarkup = this.getDayMarkup.bind(this);
     }
+
     render(){
         const{ selectedDate } = this.props;
 
@@ -68,60 +70,59 @@ class DaysContainer extends Component{
         
         
         if(day !== null){
-            const currentDate = new Date(2019,0,12).getDate();
+            const currentDate = new Date().getDate();
             const renderDate = day.getDate();
             const dateSelected = isDateSelected(renderDate, selectedDateList);
             let dateSelectedMid = false;
+    
             const selectedDateListLen = selectedDateList.length;
-
-            if(!dateSelected){
-                if(selectedDateList.length == 2){
+            let inputText = inputTextArray[day.getDate()];
+            if(dateSelected === -1){
+                if(selectedDateList.length === 2){
                     dateSelectedMid = isDateSelectedMid(renderDate, selectedDateList);
                 }
+            }else{
+                inputText = "선택" + String(dateSelected+1);
             }
             
-            if(renderDate < currentDate)
-                return(<div className="Day"><Day day={day} color={"Gray"} inputTextArray={inputTextArray}/></div>)
-            else if(renderDate === currentDate)
-                return(<div className="Day"><Day day={day} color={"Green"} inputTextArray={inputTextArray}/></div>)
-            else{
-                if(day.getDay() === 0)
-                    return(<div className="Day">
-                    <Day 
-                    day={day} 
-                    color={"Red"} 
-                    selected={dateSelected} 
-                    selectedMid={dateSelectedMid}
-                    selectedDateListLen={selectedDateListLen}
-                    handleDayClicks={handleDayClicks}
-                    inputTextArray={inputTextArray}
-                    /></div>)
-                else if(day.getDay() === 6)
-                    return(<div className="Day">
-                    <Day 
-                    day={day} 
-                    color={"Blue"} 
-                    handleDayClicks={handleDayClicks} 
-                    selected={dateSelected} 
-                    selectedMid={dateSelectedMid}
-                    selectedDateListLen={selectedDateListLen}
-                    inputTextArray={inputTextArray}
-                    /></div>)
-                else 
-                    return(<div className="Day">
-                    <Day 
-                    day={day} 
-                    color={"Black"} 
-                    handleDayClicks={handleDayClicks} 
-                    selected={dateSelected} 
-                    selectedMid={dateSelectedMid}
-                    selectedDateListLen={selectedDateListLen}
-                    inputTextArray={inputTextArray}
-                    /></div>)    
+            let color = "";
+            let disable = "";
+            if(renderDate < currentDate){
+                color = "Gray";
+                disable = true;
+            }else if(renderDate === currentDate){
+                color = "Green";
+                disable = true;
+            }else{
+                if(day.getDay() === 0){
+                    color = "Red"
+                    disable = false;
+                }
+                else if(day.getDay() === 6){
+                    color = "Blue";
+                    disable = false;
+                }else {
+                    color = "Black"
+                    disable = false;
+                }   
             }
+
+            return(<div className="Day">
+            <Day 
+            day={day} 
+            color={color} 
+            selected={dateSelected} 
+            selectedMid={dateSelectedMid}
+            selectedDateListLen={selectedDateListLen}
+            handleDayClicks={handleDayClicks}
+            inputText={inputText}
+            disable={disable}
+            /></div>)
+
         }else{
             return(<div className="Day"><Day day={null}/></div>)
         }
+
     }  
 }
 
