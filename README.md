@@ -1,5 +1,7 @@
 
 # react-DatePicker
+demo site for react-DatePicker [https://be-lgreen.github.io/react-DatePicker/](https://be-lgreen.github.io/react-DatePicker/).
+
 React Calendar Component - DatePicker
 =======
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -17,7 +19,9 @@ The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
 ### `npm test`
+
 ### `npm run build`
+
 ### `npm run eject`
 
 
